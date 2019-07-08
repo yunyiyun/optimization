@@ -139,7 +139,7 @@ def annealingoptimize(domain, costf, T=10000.0, cool=0.95, step=1):
         # Calculate the current cost and the new cost
         ea = costf(vec)
         eb = costf(vecb)
-        p = pow(math.e, (-eb - ea) / T)
+        p = pow(math.e, -(eb - ea) / T)
 
         # Is it better, or does it make the probability
         # cutoff?
