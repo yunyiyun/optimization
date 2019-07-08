@@ -139,7 +139,7 @@ def annealingoptimize(domain, costf, T=10000.0, cool=0.95, step=1):
         # Calculate the current cost and the new cost
         ea = costf(vec)
         eb = costf(vecb)
-        p = pow(math.e, -(eb - ea) / T)
+        p = pow(math.e, -abs(eb - ea) / T)
 
         # Is it better, or does it make the probability
         # cutoff?
@@ -159,8 +159,10 @@ def geneticoptimize(domain, costf, popsize=50, step=1,
         i = random.randint(0, len(domain) - 1)
         if random.random() < 0.5 and vec[i] > domain[i][0]:
             return vec[0:i] + [vec[i] - step] + vec[i + 1:]
-        else:
+        elif vec[i] < domain[i][1]:
             return vec[0:i] + [vec[i] + step] + vec[i + 1:]
+        else:
+            return vec[0:i] + [vec[i] - step] + vec[i + 1:]
 
     # Crossover Operation
     def crossover(r1, r2):
