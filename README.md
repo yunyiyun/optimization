@@ -1,1 +1,1 @@
-# The first project is used to test.
+# 参考集体智慧编程，涵盖随机搜索，梯度搜索，模拟退火，遗传算法四种优化方法
